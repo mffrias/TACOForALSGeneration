@@ -20,7 +20,6 @@
 package ar.edu.taco.regresion.examples;
 
 import ar.edu.taco.regresion.CollectionTestBase;
-import ar.edu.taco.regresion.GenericTestBase;
 import ar.uba.dc.rfm.dynalloy.visualization.VizException;
 
 public class BinomialHeapTest extends CollectionTestBase {

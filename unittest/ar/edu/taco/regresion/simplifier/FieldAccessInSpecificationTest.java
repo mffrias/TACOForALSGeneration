@@ -19,7 +19,6 @@
  */
 package ar.edu.taco.regresion.simplifier;
 
-import ar.edu.jdynalloy.JDynAlloyConfig;
 import ar.edu.taco.regresion.GenericTestBase;
 import ar.uba.dc.rfm.dynalloy.visualization.VizException;
 

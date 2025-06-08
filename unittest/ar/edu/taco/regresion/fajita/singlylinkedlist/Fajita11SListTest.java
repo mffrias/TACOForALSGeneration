@@ -21,7 +21,6 @@
 package ar.edu.taco.regresion.fajita.singlylinkedlist;
 
 import ar.edu.taco.regresion.CollectionTestBase;
-import ar.edu.taco.regresion.GenericTestBase;
 import ar.uba.dc.rfm.dynalloy.visualization.VizException;
 
 public class Fajita11SListTest extends CollectionTestBase {

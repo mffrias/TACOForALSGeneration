@@ -20,7 +20,6 @@
 package ar.edu.taco.regresion.taco.avltree;
 
 import ar.edu.taco.regresion.CollectionTestBase;
-import ar.edu.taco.regresion.GenericTestBase;
 import ar.uba.dc.rfm.dynalloy.visualization.VizException;
 /*
  * TODO: all test fail because in the source class the methods are commented. Check with the "Old" instead of "base" version of the source files

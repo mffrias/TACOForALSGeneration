@@ -88,10 +88,25 @@ public class DynalloyStage implements ITacoStage {
 
 	@Override
 	public void execute() {
+		TacoConfigurator config = TacoConfigurator.getInstance();
 		dynalloyToAlloyManager = new DynalloyToAlloyManager(this.translatingForStryker);
 
 		String output_dir = TacoConfigurator.getInstance().getOutputDir() ;
-		alloy_filename = output_dir + java.io.File.separator + "output" + OUTPUT_ALLOY_EXTENSION;
+		String newOutputName = "";
+		//We will use all the types employed in the analysis as part of the name, with their scope
+		for (String s : config.getTypeScopes()){
+			newOutputName += s+"_";
+		}
+		//Add the name of the methd under analysis with its typing
+		newOutputName += TacoConfigurator.getInstance().getMethodToCheck();
+
+		alloy_filename = output_dir + java.io.File.separator + newOutputName + OUTPUT_ALLOY_EXTENSION;
+
+		String theMethodToCheck = TacoConfigurator.getInstance().getMethodToCheck();
+		if (theMethodToCheck.endsWith("generateInvariant()")) {
+			TacoConfigurator.setGeneratedInvariantFilename(alloy_filename);
+		}
+
 		String dynalloy_filename = output_dir + java.io.File.separator + "output.dals";
 		inputDynalloyModulesFileNames = Collections.singletonList(dynalloy_filename);
 
@@ -99,6 +114,7 @@ public class DynalloyStage implements ITacoStage {
 				TacoConfigurator.CLASS_TO_CHECK_FIELD));
 		int finalPos = TacoConfigurator.getInstance().getString(TacoConfigurator.METHOD_TO_CHECK_FIELD).indexOf('(');
 		String methodToCheckWithoutTyping = TacoConfigurator.getInstance().getString(TacoConfigurator.METHOD_TO_CHECK_FIELD).substring(0, finalPos);
+
 		String assertion_id = "check_" + classToCheckNormalizer.getQualifiedClassName() + "_"
 				+ methodToCheckWithoutTyping;
 

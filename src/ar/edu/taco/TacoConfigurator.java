@@ -223,6 +223,8 @@ public class TacoConfigurator extends PropertiesConfiguration implements
 	
 	private static TacoConfigurator instance;
 
+	private static String generatedInvariantFilename = "";
+
 	public TacoConfigurator(String configurationFile,
 			Properties overridingProperties) {
 		super();
@@ -255,7 +257,17 @@ public class TacoConfigurator extends PropertiesConfiguration implements
 		}
 		return ss;
 	}
-	
+
+
+	public static void setGeneratedInvariantFilename(String fileName){
+		generatedInvariantFilename = fileName;
+	}
+
+	public static String getGeneratedInvariantFilename(){
+		return generatedInvariantFilename;
+	}
+
+
 	private TacoCustomScope buildTacoScope() {
 		TacoCustomScope taco_scope = new TacoCustomScope();
 		taco_scope.setAlloyBitwidth(this.getBitwidth());

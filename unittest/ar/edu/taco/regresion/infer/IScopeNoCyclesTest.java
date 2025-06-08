@@ -21,7 +21,6 @@ package ar.edu.taco.regresion.infer;
 
 import ar.edu.taco.infer.InferredScope;
 import ar.edu.taco.regresion.CollectionTestBase;
-import ar.edu.taco.regresion.GenericTestBase;
 import ar.uba.dc.rfm.dynalloy.visualization.VizException;
 
 public class IScopeNoCyclesTest extends CollectionTestBase {

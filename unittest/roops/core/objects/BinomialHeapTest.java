@@ -95,4 +95,25 @@ public class BinomialHeapTest extends CollectionTestBase {
     }
 
 
+    public void test_generateInvariantTest() throws VizException {
+        setConfigKeyRelevantClasses("roops.core.objects.BinomialHeap,roops.core.objects.BinomialHeapNode");
+        setConfigKeyRelevancyAnalysis(true);
+        setConfigKeyCheckNullDereference(true);
+        setConfigKeyUseJavaArithmetic(false);
+        setConfigKeyInferScope(true);
+        setConfigKeyObjectScope(0);
+        setConfigKeyIntBithwidth(5);
+        setConfigKeyLoopUnroll(4);
+        setConfigKeySkolemizeInstanceInvariant(true);
+        setConfigKeySkolemizeInstanceAbstraction(false);
+        setConfigKeyGenerateUnitTestCase(true);
+        setConfigKeyAttemptToCorrectBug(false);
+        setConfigKeyMaxStrykerMethodsPerFile(1);
+        setConfigKeyRemoveQuantifiers(true);
+        setConfigKeyUseJavaSBP(true);
+        setConfigKeyUseTightUpperBounds(true);
+        setConfigKeyTypeScopes("roops.core.objects.BinomialHeap:1,roops.core.objects.BinomialHeapNode:13");
+        check(GENERIC_PROPERTIES, "generateInvariant()", false);
+    }
+
 }

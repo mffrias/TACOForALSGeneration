@@ -79,6 +79,11 @@ public class BinomialHeap {
 	}
 
 	
+	//@ requires true;
+	//@ ensures true;
+	public void generateInvariant(){
+		this.Nodes = this.Nodes;
+	}
 
 
 	/*@ requires true;

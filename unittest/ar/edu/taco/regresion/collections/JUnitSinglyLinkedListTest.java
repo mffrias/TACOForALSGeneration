@@ -20,7 +20,6 @@
 package ar.edu.taco.regresion.collections;
 
 import ar.edu.taco.regresion.CollectionTestBase;
-import ar.edu.taco.regresion.GenericTestBase;
 import ar.uba.dc.rfm.dynalloy.visualization.VizException;
 
 public class JUnitSinglyLinkedListTest extends CollectionTestBase {

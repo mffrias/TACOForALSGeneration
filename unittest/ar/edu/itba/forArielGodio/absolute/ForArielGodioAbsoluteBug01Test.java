@@ -4,6 +4,7 @@ package ar.edu.itba.forArielGodio.absolute;
 import ar.edu.taco.regresion.CollectionTestBase;
 import ar.uba.dc.rfm.dynalloy.visualization.VizException;
 
+
 public class ForArielGodioAbsoluteBug01Test extends CollectionTestBase {
 
 	@Override
