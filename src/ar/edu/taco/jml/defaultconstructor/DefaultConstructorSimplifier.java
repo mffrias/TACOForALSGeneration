@@ -39,9 +39,9 @@ import org.multijava.mjc.JmlClassDeclarationExtension;
 import org.multijava.util.compiler.JavaStyleComment;
 
 import ar.edu.taco.engine.JmlStage;
-import ar.edu.taco.engine.StrykerStage;
+//import ar.edu.taco.engine.StrykerStage;
 import ar.edu.taco.jml.ASTSimplifierManager;
-import ar.edu.taco.stryker.api.impl.NullOutputStream;
+//import ar.edu.taco.stryker.api.impl.NullOutputStream;
 import ar.edu.taco.utils.jml.JmlAstClonerStatementVisitor;
 
 public class DefaultConstructorSimplifier extends JmlAstClonerStatementVisitor {

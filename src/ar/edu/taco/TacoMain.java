@@ -19,10 +19,7 @@
  */
 package ar.edu.taco;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
@@ -501,7 +498,8 @@ public class TacoMain {
                 String data = myReader.nextLine();
                 theActualALS += "\r\n" + data;
             }
-
+            myReader.close();
+            alsInvFile.delete();
 
             theActualALS = theActualALS.replace("fact {\r\n", "fact {");
             String classToCheck = TacoConfigurator.getInstance().getClassToCheck();
@@ -525,9 +523,26 @@ public class TacoMain {
             int posEndScopes = scopesHoldingSuffix.indexOf('\r');
             String allScopes = scopesHoldingSuffix.substring(0, posEndScopes);
 
-            System.out.println(theActualALS);
+            indexRun = theActualALS.indexOf("run {");
+            startingInRun =  theActualALS.substring(indexRun);
+            int indexClosingBrace = startingInRun.indexOf('}');
+            String runUntilClosingBrace = theActualALS.substring(indexRun, indexRun + indexClosingBrace + 1);
+            String runWithScopes = runUntilClosingBrace + " " + allScopes;
+            theActualALS = theActualALS.replace(runUntilClosingBrace, runWithScopes);
 
-            myReader.close();
+            int posCheck = theActualALS.indexOf("check check");
+            String fromChechCheck = theActualALS.substring(posCheck);
+            int posCRLN = fromChechCheck.indexOf("\r\n");
+            String theCheckCheckUntilEOL = fromChechCheck.substring(0, posCRLN + 2);
+            theActualALS = theActualALS.replace(theCheckCheckUntilEOL, "");
+            String oldFileName = TacoConfigurator.getGeneratedInvariantFilename();
+            String newFileName = TacoConfigurator.getGeneratedInvariantFilename().replace("als", "inv");
+            PrintWriter theNewFile = new PrintWriter(newFileName);
+            theNewFile.append(theActualALS);
+            theNewFile.checkError();
+            theNewFile.close();
+
+
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
