@@ -199,8 +199,9 @@ public class TacoConfigurator extends PropertiesConfiguration implements
 	public static final String USE_TIGHT_UPPER_BOUNDS = "useTightUpperBounds";
 	private static final boolean USE_TIGHT_UPPER_BOUNDS_DEFAULT = false;
 
-	private static final String OUTPUT_DIR = "output_dir";
-	private static final String OUTPUT_DIR_DEFAULT = "output";
+	// original: output
+	private static final String OUTPUT_DIR = "andrea/tasks";
+	private static final String OUTPUT_DIR_DEFAULT = "andrea/tasks";
 
 	private static final String TYPE_SCOPES = "type_scopes";
 
