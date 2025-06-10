@@ -144,7 +144,6 @@ import ar.uba.dc.rfm.alloy.ast.expressions.ExpressionVisitor;
  */
 public class JmlExpressionVisitor extends JmlBaseExpressionVisitor {
 
-	private static Logger log = Logger.getLogger(BlockStatementsVisitor.class);
 
 	private Instant instant;
 
@@ -206,8 +205,6 @@ public class JmlExpressionVisitor extends JmlBaseExpressionVisitor {
 			JArrayAccessExpression jArrayAccessExpression) {
 
 		jArrayAccessExpression.accept(prettyPrint);
-		log.debug("Visiting: " + jArrayAccessExpression.getClass().getName());
-		log.debug("Statement: " + prettyPrint.getPrettyPrint());
 
 		jArrayAccessExpression.prefix().accept(this);
 		AlloyExpression variableReference = this.getAlloyExpression();
@@ -247,8 +244,6 @@ public class JmlExpressionVisitor extends JmlBaseExpressionVisitor {
 	public void visitArrayLengthExpression(
 			JArrayLengthExpression jArrayLengthExpression) {
 		jArrayLengthExpression.accept(prettyPrint);
-		log.debug("Visiting: " + jArrayLengthExpression.getClass().getName());
-		log.debug("Statement: " + prettyPrint.getPrettyPrint());
 
 		jArrayLengthExpression.prefix().accept(this);
 		AlloyExpression variableReference = this.getAlloyExpression();
@@ -2287,9 +2282,6 @@ public class JmlExpressionVisitor extends JmlBaseExpressionVisitor {
 			super.visitLocalVariableExpression(jLocalVariableExpression);
 		} else {
 			jLocalVariableExpression.accept(prettyPrint);
-			log.debug("Visiting: "
-					+ jLocalVariableExpression.getClass().getName());
-			log.debug("Statement: " + prettyPrint.getPrettyPrint());
 
 			String identifier = new String(jLocalVariableExpression.ident());
 			AlloyVariable primedVariable = new AlloyVariable(identifier, true);

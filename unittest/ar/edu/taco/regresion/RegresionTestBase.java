@@ -29,8 +29,6 @@ import junit.framework.TestCase;
 import mujava.api.Configuration;
 import mujava.op.PRVO;
 import mujava.op.basic.COR;
-import org.apache.log4j.xml.DOMConfigurator;
-
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
@@ -50,13 +48,6 @@ public class RegresionTestBase extends TestCase {
 	protected void setUp() {
 		if (!initializated) {
 			initializated = true;
-
-			File file = new File("config/log4j.xml");
-			if (file.exists()) {
-				DOMConfigurator.configure("config/log4j.xml");
-			} else {
-				System.err.println("File config/log4j.xml not found");
-			}
 
 			AlloyJNILibraryPath alloyJNILibraryPath = new AlloyJNILibraryPath();
 			alloyJNILibraryPath.setupJNILibraryPath();

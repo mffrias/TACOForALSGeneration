@@ -43,7 +43,6 @@ import ar.edu.taco.TacoException;
  */
 public class JavaAndJmlPrettyPrint2 extends RacPrettyPrinter2 {
 
-	private static Logger log = Logger.getLogger(JavaAndJmlPrettyPrint2.class);
 
 	private StringWriter stringWriter = new StringWriter();
 
@@ -74,7 +73,6 @@ public class JavaAndJmlPrettyPrint2 extends RacPrettyPrinter2 {
 			return pretty_print_str;
 
 		} catch (Throwable t) {
-			log.error(t);
 			throw new TacoException(t.getMessage());
 		}
 	}

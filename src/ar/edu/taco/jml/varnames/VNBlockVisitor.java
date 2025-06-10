@@ -24,7 +24,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
 import org.jmlspecs.checker.JmlAssertStatement;
 import org.jmlspecs.checker.JmlAssignmentStatement;
 import org.jmlspecs.checker.JmlAssumeStatement;
@@ -60,7 +59,6 @@ import ar.edu.taco.jml.utils.ASTUtils;
 import ar.edu.taco.utils.jml.JmlAstClonerStatementVisitor;
 
 public class VNBlockVisitor extends JmlAstClonerStatementVisitor {
-    private static Logger log = Logger.getLogger(VNBlockVisitor.class);
     private static int variableNameIndex = 0;
 
     public String createNewName(String originalName) {
@@ -135,7 +133,6 @@ public class VNBlockVisitor extends JmlAstClonerStatementVisitor {
 
         JavaAndJmlPrettyPrint2 prettyPrinter = new JavaAndJmlPrettyPrint2();
         newSelf.accept(prettyPrinter);
-        log.debug(prettyPrinter.getPrettyPrint());
 
         // super.visitBlockStatement(new JBlock(self.getTokenReference(),
         // statements, self.getComments()));

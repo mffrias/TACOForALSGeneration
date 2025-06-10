@@ -51,13 +51,6 @@ public class RegresionTestBase extends TestCase {
 		if (!initializated) {
 			initializated = true;
 
-			File file = new File("config/log4j.xml");
-			if (file.exists()) {
-				DOMConfigurator.configure("config/log4j.xml");
-			} else {
-				System.err.println("File config/log4j.xml not found");
-			}
-
 			AlloyJNILibraryPath alloyJNILibraryPath = new AlloyJNILibraryPath();
 			alloyJNILibraryPath.setupJNILibraryPath();
 		}

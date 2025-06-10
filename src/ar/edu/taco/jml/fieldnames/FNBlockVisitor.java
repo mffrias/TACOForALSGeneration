@@ -22,7 +22,6 @@ package ar.edu.taco.jml.fieldnames;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.jmlspecs.checker.JmlAssertStatement;
 import org.jmlspecs.checker.JmlAssignableClause;
 import org.jmlspecs.checker.JmlAssignmentStatement;
@@ -62,8 +61,7 @@ import ar.edu.taco.jml.utils.SpecSimplifierClassBaseVisitor;
 
 public class FNBlockVisitor extends SpecSimplifierClassBaseVisitor {
 
-	private static Logger log = Logger.getLogger(FNBlockVisitor.class);
-	
+
 	private String currentClassName = null;
 	
 	private final JmlToSimpleJmlContext jmlToSimpleJmlContext;
@@ -149,7 +147,6 @@ public class FNBlockVisitor extends SpecSimplifierClassBaseVisitor {
 	    this.getStack().push(newSelf);
 	    JavaAndJmlPrettyPrint2 prettyPrinter = new JavaAndJmlPrettyPrint2();
 	    newSelf.accept(prettyPrinter);
-	    log.debug(prettyPrinter.getPrettyPrint());
 	}
 	
 	// BEGIN - ESStatementVisitor

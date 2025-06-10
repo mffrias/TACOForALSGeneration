@@ -52,8 +52,6 @@ import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
-import org.apache.log4j.Logger;
-import org.apache.log4j.xml.DOMConfigurator;
 import org.multijava.mjc.JCompilationUnitType;
 
 import ar.edu.jdynalloy.JDynAlloyConfig;
@@ -102,7 +100,6 @@ import ar.uba.dc.rfm.dynalloy.ast.ProgramDeclaration;
  */
 public class TacoMain {
 
-    private static Logger log = Logger.getLogger(TacoMain.class);
 
     private static final String CMD = "Taco";
     private static final String HEADER = "Taco static analysis tool.";
@@ -290,12 +287,7 @@ public class TacoMain {
             System.out.println("****** Starting Taco (version. " + tacoVersion + ") ****** ");
             System.out.println("");
 
-            File file = new File("config/log4j.xml");
-            if (file.exists()) {
-                DOMConfigurator.configure("config/log4j.xml");
-            } else {
-                System.err.println("log4j:WARN File config/log4j.xml not found");
-            }
+
 
             TacoMain main = new TacoMain(null);
 
@@ -416,14 +408,10 @@ public class TacoMain {
 
         // JDYNALLOY PARSING
         if (TacoConfigurator.getInstance().getBoolean(TacoConfigurator.JDYNALLOY_PARSER_ENABLED, TacoConfigurator.JDYNALLOY_PARSER_ENABLED_DEFAULT)) {
-            log.info("****** START: Parsing JDynAlloy files ****** ");
             JDynAlloyParsingStage jDynAlloyParser = new JDynAlloyParsingStage(jdynalloy_modules);
             jDynAlloyParser.execute();
             jdynalloy_modules.addAll(jDynAlloyParser.getParsedModules());
             /**/		jDynAlloyParser = null;
-            log.info("****** END: Parsing JDynAlloy files ****** ");
-        } else {
-            log.info("****** INFO: Parsing JDynAlloy is disabled (hint enablet it using 'jdynalloy.parser.enabled') ****** ");
         }
         // END JDYNALLOY PARSING
 
@@ -469,7 +457,6 @@ public class TacoMain {
             dynalloyToAlloy.execute();
             // DYNALLOY TO ALLOY TRANSLATION
 
-            log.info("****** Transformation process finished ****** ");
         }
 
     }

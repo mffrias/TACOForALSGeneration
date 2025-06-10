@@ -30,7 +30,6 @@ import ar.edu.taco.TacoConfigurator;
 import ar.edu.taco.TacoException;
 import ar.edu.taco.jml.loop.*;
 import ar.edu.taco.utils.FileUtils;
-import org.apache.log4j.Logger;
 import org.jmlspecs.checker.JmlSourceMethod;
 import org.jmlspecs.jmlrac.JavaAndJmlPrettyPrint2;
 import org.multijava.mjc.JCompilationUnitType;
@@ -52,7 +51,6 @@ import ar.edu.taco.utils.jml.JmlAstClonerStatementVisitor;
 import org.multijava.mjc.JTypeDeclarationType;
 
 public class ASTSimplifierManager {
-	private static Logger log = Logger.getLogger(ASTSimplifierManager.class);
 	private List<JmlAstClonerStatementVisitor> simplifiers;
 
 	private final JmlToSimpleJmlContext jmlToSimpleJmlContext;
@@ -129,7 +127,6 @@ public class ASTSimplifierManager {
 
 
 	public List<JCompilationUnitType> simplify(JCompilationUnitType input_compilation_unit) {
-		log.debug("Simplifying Compilation Unit: " + input_compilation_unit.fileNameIdent());
 
 		JCompilationUnitType compilation_unit = input_compilation_unit;
 		for (JmlAstClonerStatementVisitor simplifier : simplifiers) {
@@ -144,8 +141,6 @@ public class ASTSimplifierManager {
 
 		}
 
-
-		log.debug("Simplifier Ends for compilation unit:" + input_compilation_unit.fileNameIdent());
 
 		return Collections.<JCompilationUnitType> singletonList(compilation_unit);
 	}

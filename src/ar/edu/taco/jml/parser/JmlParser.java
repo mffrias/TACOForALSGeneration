@@ -30,7 +30,6 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.jmlspecs.checker.JmlOptions;
 import org.jmlspecs.checker.JmlTypeDeclaration;
 import org.jmlspecs.checker.JmlTypeLoader;
@@ -44,7 +43,6 @@ import ar.edu.taco.TacoConfigurator;
 import ar.edu.taco.TacoException;
 
 public class JmlParser {
-    private Logger log = Logger.getLogger(JmlParser.class);
     private List<String> parse;
 
     public class TypeCheckerMain extends Main {
@@ -56,12 +54,8 @@ public class JmlParser {
             try {
                 processTaskQueue();
             } catch (CompilationAbortedException e) {
-                log.error(e);
             } catch (CompilationAbortedError e) {
-                log.error(e);
             }
-
-            log.info("Parser JML finished in " + (int) (System.currentTimeMillis() - time) / 1000 + " seconds");
 
             return true;
         }

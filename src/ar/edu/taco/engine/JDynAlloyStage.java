@@ -25,10 +25,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Vector;
-
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-
 import ar.edu.jdynalloy.ast.JDynAlloyModule;
 import ar.edu.jdynalloy.binding.BindingManager;
 import ar.edu.jdynalloy.modifies.ModifiesSolverManager;
@@ -47,7 +43,6 @@ import ar.uba.dc.rfm.dynalloy.ast.DynalloyModule;
  *
  */
 public class JDynAlloyStage implements ITacoStage {
-	private static Logger log = Logger.getLogger(JDynAlloyStage.class);
 	static final private String OUTPUT_DYNALLOY_EXTENSION = ".dals";
 	static final private String OUTPUT_JDYNALLOY_WITH_OUT_MODIFIES_EXTENSION = ".without.modifies.djals";
 	static final private String OUTPUT_JDYNALLOY_WITH_OUT_CALLSPEC_EXTENSION = ".without.callspec.djals";
@@ -113,7 +108,6 @@ public class JDynAlloyStage implements ITacoStage {
 		List<String> relevantClassesList = null;
 		Scene relevantAnalysisScene = null;
 		if (tacoConfigurator.getRelevancyAnalysis()) {
-			log.debug("Starting relevancy analysis");
 			RelevancyAnalysisManager relevancyAnalysisManager = new RelevancyAnalysisManager();
 			relevancyAnalysisManager.setBitWidth(TacoConfigurator.getInstance().getBitwidth());
 			relevancyAnalysisManager.setJavaArithmetic(tacoConfigurator.getUseJavaArithmetic());
@@ -124,7 +118,6 @@ public class JDynAlloyStage implements ITacoStage {
 
 			tacoConfigurator.setProperty(TacoConfigurator.RELEVANT_CLASSES, relevantClasses);
 			relevantClassesList = tacoConfigurator.getRelevantClasses();
-			log.debug("Relevant Classes: " + relevantClassesList);
 		}
 
 		// slice irrelevant modules, fields & programs
@@ -141,9 +134,7 @@ public class JDynAlloyStage implements ITacoStage {
 
 		// activate setting "debug" logger lever for this class log4j
 		// configuration!
-		if (log.getLevel() == Level.DEBUG || log.getLevel() == Level.TRACE) {
-			printToFile(this.modules, OUTPUT_JDYNALLOY_WITH_OUT_MODIFIES_EXTENSION);
-		}
+
 
 		dynJAlloyBinding = regenerateBindings(tacoConfigurator.getDynAlloyToAlloyLoopUnroll());
 

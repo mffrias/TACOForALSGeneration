@@ -27,7 +27,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 
-import org.apache.log4j.Logger;
 import org.jmlspecs.checker.JmlAssertStatement;
 import org.jmlspecs.checker.JmlAssignmentStatement;
 import org.jmlspecs.checker.JmlAssumeStatement;
@@ -159,7 +158,6 @@ public class BlockStatementsVisitor extends JDynAlloyASTVisitor {
 
 	int ifLabelCount = 10000;
 	// int whileLabelCount = 10000;
-	private static Logger log = Logger.getLogger(BlockStatementsVisitor.class);
 
 	/**
 	 * @return a JStatement that represent a JAlloyProgram.
@@ -175,8 +173,6 @@ public class BlockStatementsVisitor extends JDynAlloyASTVisitor {
 	@Override
 	public void visitAssignmentExpression(JAssignmentExpression jAssignmentExpression) {
 		jAssignmentExpression.accept(prettyPrint);
-		log.debug("Visiting: " + jAssignmentExpression.getClass().getName());
-		log.debug("Statement: " + prettyPrint.getPrettyPrint());
 
 		ExpressionVisitor expressionVisitor = new ExpressionVisitor();
 
@@ -356,8 +352,7 @@ public class BlockStatementsVisitor extends JDynAlloyASTVisitor {
 	@Override
 	public void visitCompoundAssignmentExpression(JCompoundAssignmentExpression jCompoundAssignmentExpression) {
 		jCompoundAssignmentExpression.accept(prettyPrint);
-		log.debug("Visiting: " + jCompoundAssignmentExpression.getClass().getName());
-		log.debug("Statement: " + prettyPrint.getPrettyPrint());
+
 
 		ExpressionVisitor expressionVisitor = new ExpressionVisitor();
 
@@ -397,8 +392,6 @@ public class BlockStatementsVisitor extends JDynAlloyASTVisitor {
 	@Override
 	public void visitAssertStatement(JAssertStatement self){
 		self.accept(prettyPrint);
-		log.debug("Visiting: " + self.getClass().getName());
-		log.debug("Statement:\n" + prettyPrint.getPrettyPrint());
 
 		ExpressionVisitor expressionVisitor = new ExpressionVisitor();
 		JExpression cond = self.predicate();
@@ -410,8 +403,6 @@ public class BlockStatementsVisitor extends JDynAlloyASTVisitor {
 	@Override
 	public void visitIfStatement(JIfStatement jIfStatement) {
 		jIfStatement.accept(prettyPrint);
-		log.debug("Visiting: " + jIfStatement.getClass().getName());
-		log.debug("Statement:\n" + prettyPrint.getPrettyPrint());
 
 		if (this.isTryCatchBlock) {
 			programBuffer.openIf(BlockStatementSolver.getTryCatchSurrounderCondition());
@@ -453,8 +444,6 @@ public class BlockStatementsVisitor extends JDynAlloyASTVisitor {
 	@Override
 	public void visitJmlAssertStatement(JmlAssertStatement jmlAssertStatement) {
 		jmlAssertStatement.accept(prettyPrint);
-		log.debug("Visiting: " + jmlAssertStatement.getClass().getName());
-		log.debug("Statement: " + prettyPrint.getPrettyPrint());
 
 		JmlExpressionVisitor jmlExpressionVisitor = new JmlExpressionVisitor(Instant.PRE_INSTANT);
 		jmlAssertStatement.accept(jmlExpressionVisitor);
@@ -471,8 +460,6 @@ public class BlockStatementsVisitor extends JDynAlloyASTVisitor {
 	@Override
 	public void visitJmlAssignmentStatement(JmlAssignmentStatement jmlAssignamentStatement) {
 		jmlAssignamentStatement.accept(prettyPrint);
-		log.debug("Visiting: " + jmlAssignamentStatement.getClass().getName());
-		log.debug("Statement: " + prettyPrint.getPrettyPrint());
 
 		JExpressionStatement expressionStatement = jmlAssignamentStatement.assignmentStatement();
 		JAssignmentExpression assignmentExpression = (JAssignmentExpression) expressionStatement.getExpression();
@@ -486,8 +473,6 @@ public class BlockStatementsVisitor extends JDynAlloyASTVisitor {
 	@Override
 	public void visitJmlAssumeStatement(JmlAssumeStatement jmlAssumeStatement) {
 		jmlAssumeStatement.accept(prettyPrint);
-		log.debug("Visiting: " + jmlAssumeStatement.getClass().getName());
-		log.debug("Statement: " + prettyPrint.getPrettyPrint());
 
 		JmlExpressionVisitor jmlExpressionVisitor = new JmlExpressionVisitor(Instant.PRE_INSTANT);
 		jmlAssumeStatement.accept(jmlExpressionVisitor);
@@ -502,8 +487,6 @@ public class BlockStatementsVisitor extends JDynAlloyASTVisitor {
 
 	public void visitJmlLoopStatement(JmlLoopStatement jmlLoopStatement) {
 		jmlLoopStatement.accept(prettyPrint);
-		log.debug("Visiting: " + jmlLoopStatement.getClass().getName());
-		log.debug("Statement: " + prettyPrint.getPrettyPrint());
 
 		JmlExpressionVisitor jmlExpressionVisitor = new JmlExpressionVisitor(Instant.PRE_INSTANT);
 
@@ -572,8 +555,6 @@ public class BlockStatementsVisitor extends JDynAlloyASTVisitor {
 	@Override
 	public void visitMethodCallExpression(JMethodCallExpression jMethodCallExpression) {
 		jMethodCallExpression.accept(prettyPrint);
-		log.debug("Visiting: " + jMethodCallExpression.getClass().getName());
-		log.debug("Statement: " + prettyPrint.getPrettyPrint());
 
 		ExpressionVisitor expressionVisitor = new ExpressionVisitor();
 		jMethodCallExpression.accept(expressionVisitor);
@@ -592,8 +573,6 @@ public class BlockStatementsVisitor extends JDynAlloyASTVisitor {
 	@Override
 	public void visitPostfixExpression(JPostfixExpression jPostfixExpression) {
 		jPostfixExpression.accept(prettyPrint);
-		log.debug("Visiting: " + jPostfixExpression.getClass().getName());
-		log.debug("Statement: " + prettyPrint.getPrettyPrint());
 
 		ExpressionVisitor expressionVisitor = new ExpressionVisitor();
 
@@ -636,8 +615,6 @@ public class BlockStatementsVisitor extends JDynAlloyASTVisitor {
 	@Override
 	public void visitReturnStatement(JReturnStatement returnStatement) {
 		returnStatement.accept(prettyPrint);
-		log.debug("Visiting: " + returnStatement.getClass().getName());
-		log.debug("Statement: " + prettyPrint.getPrettyPrint());
 
 		if (returnStatement.expr() != null) {
 			ExpressionVisitor expressionVisitor = new ExpressionVisitor();
@@ -684,8 +661,6 @@ public class BlockStatementsVisitor extends JDynAlloyASTVisitor {
 	@Override
 	public void visitSwitchStatement(JSwitchStatement switchStatement) {
 		switchStatement.accept(prettyPrint);
-		log.debug("Visiting: " + switchStatement.getClass().getName());
-		log.debug("Statement: " + prettyPrint.getPrettyPrint());
 
 		if (this.isTryCatchBlock) {
 			programBuffer.openIf(BlockStatementSolver.getTryCatchSurrounderCondition());
@@ -730,8 +705,6 @@ public class BlockStatementsVisitor extends JDynAlloyASTVisitor {
 	@Override
 	public void visitSwitchGroup(JSwitchGroup switchGroup) {
 		switchGroup.accept(prettyPrint);
-		log.debug("Visiting: " + switchGroup.getClass().getName());
-		log.debug("Statement: " + prettyPrint.getPrettyPrint());
 
 		if (this.isTryCatchBlock) {
 			programBuffer.openIf(BlockStatementSolver.getTryCatchSurrounderCondition());
@@ -777,8 +750,6 @@ public class BlockStatementsVisitor extends JDynAlloyASTVisitor {
 	@Override
 	public void visitThrowStatement(JThrowStatement jThrowStatement) {
 		jThrowStatement.accept(prettyPrint);
-		log.debug("Visiting: " + jThrowStatement.getClass().getName());
-		log.debug("Statement: " + prettyPrint.getPrettyPrint());
 
 		ExpressionVisitor expressionVisitor = new ExpressionVisitor();
 		AlloyVariable lvalue = JExpressionFactory.THROW_VARIABLE;
@@ -802,8 +773,6 @@ public class BlockStatementsVisitor extends JDynAlloyASTVisitor {
 	@Override
 	public void visitTryCatchStatement(JTryCatchStatement jTryCatchStatement) {
 		jTryCatchStatement.accept(prettyPrint);
-		log.debug("Visiting: " + jTryCatchStatement.getClass().getName());
-		log.debug("Statement: " + prettyPrint.getPrettyPrint());
 
 		BlockStatementsVisitor blockScopeTranslator = new BlockStatementsVisitor();
 		// blockScopeTranslator.isTryCatchBlock = true;
@@ -829,8 +798,6 @@ public class BlockStatementsVisitor extends JDynAlloyASTVisitor {
 	@Override
 	public void visitTryFinallyStatement(JTryFinallyStatement jTryFinallyStatement) {
 		jTryFinallyStatement.accept(prettyPrint);
-		log.debug("Visiting: " + jTryFinallyStatement.getClass().getName());
-		log.debug("Statement: " + prettyPrint.getPrettyPrint());
 
 		jTryFinallyStatement.tryClause().accept(this);
 
@@ -844,8 +811,6 @@ public class BlockStatementsVisitor extends JDynAlloyASTVisitor {
 	@Override
 	public void visitVariableDefinition(JVariableDefinition jVariableDefinition) {
 		jVariableDefinition.accept(prettyPrint);
-		log.debug("Visiting: " + jVariableDefinition.getClass().getName());
-		log.debug("Statement: " + prettyPrint.getPrettyPrint());
 
 		// Create an AlloyVariable from variable name
 		AlloyVariable alloy_variable = buildAlloyVariable(jVariableDefinition.ident());
@@ -1007,8 +972,6 @@ public class BlockStatementsVisitor extends JDynAlloyASTVisitor {
 
 	public void visitDoStatement(JDoStatement self){
 		self.accept(prettyPrint);
-		log.debug("Visiting: " + JDoStatement.class);
-		log.debug("Statement: \n" + prettyPrint.getPrettyPrint());
 
 		HasBreakStatementVisitor vis = new HasBreakStatementVisitor();
 		self.body().accept(vis);
@@ -1069,8 +1032,6 @@ public class BlockStatementsVisitor extends JDynAlloyASTVisitor {
 	@Override
 	public void visitWhileStatement(JWhileStatement jWhileStatement) {
 		jWhileStatement.accept(prettyPrint);
-		log.debug("Visiting: " + JWhileStatement.class);
-		log.debug("Statement: \n" + prettyPrint.getPrettyPrint());
 
 		HasBreakStatementVisitor vis = new HasBreakStatementVisitor();
 

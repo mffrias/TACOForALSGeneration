@@ -25,7 +25,6 @@ import java.util.HashSet;
 
 import junit.framework.TestCase;
 
-import org.apache.log4j.xml.DOMConfigurator;
 
 import antlr.ASTFactory;
 import ar.edu.jdynalloy.JDynAlloyConfig;
@@ -56,12 +55,6 @@ public abstract class JDynAlloyParserTestBase extends TestCase {
 	protected void setUp() throws Exception {
 		ctx = new JDynAlloyProgramParseContext(new HashSet<AlloyVariable>(), new HashSet<AlloyVariable>(), true);
 		if (!initialized) {
-			File file = new File("config/log4j.xml");
-			if (file.exists()) {
-				DOMConfigurator.configure("config/log4j.xml");
-			} else {
-				System.err.println("File config/log4j.xml not found");
-			}
 			
 			// Only execute one time this statement
 			JDynAlloyConfig.buildConfig("unittest/unittestconfig.properties");

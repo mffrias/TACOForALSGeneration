@@ -21,8 +21,6 @@ package ar.edu.taco.jml.expression;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.log4j.Logger;
 import org.jmlspecs.checker.JmlAssignmentStatement;
 import org.jmlspecs.checker.JmlLoopStatement;
 import org.jmlspecs.checker.JmlVariableDefinition;
@@ -44,7 +42,6 @@ import ar.edu.taco.jml.utils.ASTUtils;
 import ar.edu.taco.utils.jml.JmlAstClonerStatementVisitor;
 
 public class ESBlockVisitor extends JmlAstClonerStatementVisitor {
-    private static Logger log = Logger.getLogger(ESBlockVisitor.class);
     // BEGIN - ESStatementVisitor
 
     private List<JStatement> declarationStatements;
@@ -142,7 +139,6 @@ public class ESBlockVisitor extends JmlAstClonerStatementVisitor {
         this.getStack().push(newSelf);
         JavaAndJmlPrettyPrint2 prettyPrinter = new JavaAndJmlPrettyPrint2();
         newSelf.accept(prettyPrinter);
-        log.debug(prettyPrinter.getPrettyPrint());
         // super.visitBlockStatement(new JBlock(self.getTokenReference(),
         // statements, self.getComments()));
     }
