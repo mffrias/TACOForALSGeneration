@@ -1,0 +1,4 @@
+# Enable auto-env through the sdkman_auto_env config
+# Add key=value pairs of SDKs to use below
+java=7.0.352-zulu
+ant=1.9.15
