@@ -1,0 +1,7 @@
+JUnit version 4.8.2
+Could not find class: ar.edu.itba.forArielGodio.binarySearchForArielGodioBinarySeachBug01Test
+
+Time: 0
+
+OK (0 tests)
+

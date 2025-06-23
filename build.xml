@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project basedir="." default="build" name="taco">
+<project basedir="." default="build" name="alsgen">
 	
 	<!-- PROPERTIES DEFINITION -->
 	<property environment="env" />
@@ -11,7 +11,7 @@
 	<property name="source" value="1.7" />
 	
 	<!-- TACO properties definition -->
-	<property name="app.id" value="taco" />
+	<property name="app.id" value="alsgen" />
 	<property name="app.version" value="1.2.0" />
 	<property name="app.createdBy" value="The RFM Group at the Universidad de Buenos Aires, Argentina." />
 
@@ -27,7 +27,7 @@
 	        <pathelement location="./lib/edu.mit.csail.sdg.annotations_0.2.5.jar" />
 	        <pathelement location="./lib/guava-16.0.1.jar" />
 	        <pathelement location="./lib/javassist.jar" />
-	        <pathelement location="./lib/jdynalloy.jar" />
+	        <pathelement location="./lib/jDynAlloy.jar" />
 	        <pathelement location="./lib/jml-release.jar" />
 	        <pathelement location="./lib/junit-4.8.2.jar" />
 	        <pathelement location="./lib/junit.jar" />
