@@ -105,11 +105,11 @@ public class JmlStage implements ITacoStage {
 			JTypeDeclarationType typeDeclaration = compilation_unit.typeDeclarations()[0];
 			String filename = canonical_path + java.io.File.separator + typeDeclaration.getCClass().getJavaName().replaceAll("\\.", "/");
 			files.add(typeDeclaration.getCClass().getJavaName());
-			try {
-				FileUtils.writeToFile(filename + OUTPUT_SIMPLIFIED_JAVA_EXTENSION, JavaAndJmlPrettyPrint2.print(compilation_unit));
-			} catch (IOException e) {
-				throw new RuntimeException("DYNJALLOY ERROR! " + e.getMessage());
-			}
+//			try {
+//				FileUtils.writeToFile(filename + OUTPUT_SIMPLIFIED_JAVA_EXTENSION, JavaAndJmlPrettyPrint2.print(compilation_unit));
+//			} catch (IOException e) {
+//				throw new RuntimeException("DYNJALLOY ERROR! " + e.getMessage());
+//			}
 		}
 		return files;
 	}

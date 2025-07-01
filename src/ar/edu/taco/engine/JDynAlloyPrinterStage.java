@@ -19,7 +19,7 @@ public class JDynAlloyPrinterStage implements ITacoStage {
 	@Override
 	public void execute() {
 		for (JDynAlloyModule module : modules) {
-			printToFile(module);
+			//printToFile(module);
 		}
 
 	}

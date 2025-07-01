@@ -20,6 +20,7 @@
 
 package ar.edu.taco.engine;
 
+import java.io.File;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -30,6 +31,7 @@ import ar.edu.jdynalloy.xlator.JType;
 import ar.edu.taco.TacoConfigurator;
 import ar.edu.taco.dynalloy.DynalloyToAlloyManager;
 import ar.edu.taco.simplejml.helpers.JavaClassNameNormalizer;
+import ar.edu.taco.utils.FileUtils;
 import ar.uba.dc.rfm.alloy.AlloyTyping;
 import ar.uba.dc.rfm.alloy.ast.expressions.AlloyExpression;
 import ar.uba.dc.rfm.alloy.ast.expressions.ExprVariable;
@@ -124,6 +126,11 @@ public class DynalloyStage implements ITacoStage {
 				predsComingFromArithmeticConstraintsInObjectInvariantsByModule,
 				varsAndTheirTypesComingFromArithmeticConstraintsInContractsByProgram,
 				predsComingFromArithmeticConstraintsInContractsByProgram);
+
+		File outputFileToDelete = new File(dynalloy_filename);
+		if(outputFileToDelete.exists()){
+			outputFileToDelete.delete();
+		}
 	}
 
 	public String get_alloy_filename() {

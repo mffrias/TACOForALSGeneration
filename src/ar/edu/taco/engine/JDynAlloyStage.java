@@ -158,11 +158,11 @@ public class JDynAlloyStage implements ITacoStage {
 			String output_dir = TacoConfigurator.getInstance().getOutputDir();
 
 			String moduleFilename = output_dir + java.io.File.separator + moduleName.replaceAll("_", "/") + OUTPUT_DYNALLOY_EXTENSION;
-			try {
-				FileUtils.writeToFile(moduleFilename, moduleBody);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+//			try {
+//				FileUtils.writeToFile(moduleFilename, moduleBody);
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
 
 		}
 
