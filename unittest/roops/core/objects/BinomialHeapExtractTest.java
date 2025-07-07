@@ -36,7 +36,7 @@ public class BinomialHeapExtractTest extends CollectionTestBase {
         check(GENERIC_PROPERTIES, "extractMin()", false);
     }
 
-    public void test_generateInv() throws VizException {
+    public void test_tenerateInvariantTest() throws VizException {
         // same configuration; just change the target to generateInv()
         setConfigKeyRelevantClasses("roops.core.objects.BinomialHeap,roops.core.objects.BinomialHeapNode");
         setConfigKeyRelevancyAnalysis(true);
@@ -55,6 +55,6 @@ public class BinomialHeapExtractTest extends CollectionTestBase {
         setConfigKeyUseJavaSBP(true);
         setConfigKeyUseTightUpperBounds(true);
         setConfigKeyTypeScopes("roops.core.objects.BinomialHeap:1,roops.core.objects.BinomialHeapNode:13");
-        check(GENERIC_PROPERTIES, "generateInv()", false);
+        check(GENERIC_PROPERTIES, "generateInvariant()", false);
     }
 }
