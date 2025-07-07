@@ -1,7 +1,7 @@
 // === BinomialHeapExtractTest.java ===
 package roops.core.objects;
 
-import ar.edu.taco.regresion.CollectionTesetBase;
+import ar.edu.taco.regresion.CollectionTestBase;
 import ar.uba.dc.rfm.dynalloy.visualization.VizException;
 
 /**
