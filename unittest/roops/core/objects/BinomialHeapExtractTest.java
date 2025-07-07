@@ -7,7 +7,7 @@ import ar.uba.dc.rfm.dynalloy.visualization.VizException;
 /**
  * JUnit driver for TACO/JML testing: only extractMin() and generateInv().
  */
-public class BinomialHeapExtractTest.java extends CollectionTestBase {
+public class BinomialHeapExtractTest extends CollectionTestBase {
 
     @Override
     protected String getClassToCheck() {
