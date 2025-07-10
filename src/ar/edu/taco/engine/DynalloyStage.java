@@ -127,10 +127,10 @@ public class DynalloyStage implements ITacoStage {
 				varsAndTheirTypesComingFromArithmeticConstraintsInContractsByProgram,
 				predsComingFromArithmeticConstraintsInContractsByProgram);
 
-		File outputFileToDelete = new File(dynalloy_filename);
-		if(outputFileToDelete.exists()){
-			outputFileToDelete.delete();
-		}
+//		File outputFileToDelete = new File(dynalloy_filename);
+//		if(outputFileToDelete.exists()){
+//			outputFileToDelete.delete();
+//		}
 	}
 
 	public String get_alloy_filename() {

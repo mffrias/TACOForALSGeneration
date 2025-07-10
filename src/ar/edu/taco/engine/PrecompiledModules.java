@@ -112,7 +112,7 @@ public class PrecompiledModules implements ITacoStage {
 			JDynAlloyModule module = precompiledModule.getModule();
 			modules.add(module);
 			// print to file
-			//andrea/taskpprintToFile(module);
+			printToFile(module);
 		}
 	}
 
@@ -121,7 +121,7 @@ public class PrecompiledModules implements ITacoStage {
 				.getModule();
 
 		// print to file
-//		printToFile(module);
+		printToFile(module);
 
 		return module;
 	}
